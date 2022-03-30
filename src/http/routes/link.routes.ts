@@ -16,9 +16,7 @@ linksRoutes.post("/", (request, response) => {
 linksRoutes.get("/:username", (request, response) => {
     const { username } = request.params;
 
-    const all = linksRepository.list();
-
-    const accountLinks = all.filter(link => link.created_by === username);
+    const accountLinks = linksRepository.list(username);
 
     return response.json(accountLinks)
 })

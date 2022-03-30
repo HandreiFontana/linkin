@@ -10,7 +10,7 @@ interface ILinksRepository {
         category,
         isPrivate
     }: ICreateLinkDTO): void,
-    list(): Link[]
+    list(username: string): Link[]
 }
 
 export { ILinksRepository }

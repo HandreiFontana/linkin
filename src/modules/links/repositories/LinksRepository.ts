@@ -34,9 +34,8 @@ class LinksRepository implements ILinksRepository {
         this.links.push(link);
     }
 
-    list(): Link[] {
-
-        return this.links;
+    list(username: string): Link[] {
+        return this.links.filter(link => link.created_by === username)
     }
 }
 
