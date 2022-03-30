@@ -1,6 +1,6 @@
 import { Router } from 'express';
+import { AccountsRepository } from '../../modules/accounts/repositories/AccountsRepository';
 
-import { AccountsRepository } from '../../repositories/AccountsRepository';
 
 const accountsRoutes = Router();
 const accountsRepository = new AccountsRepository();

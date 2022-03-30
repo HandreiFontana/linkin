@@ -1,6 +1,6 @@
 import { Router } from 'express';
+import { LinksRepository } from '../../modules/links/repositories/LinksRepository';
 
-import { LinksRepository } from '../../repositories/LinksRepository';
 
 const linksRoutes = Router();
 const linksRepository = new LinksRepository();

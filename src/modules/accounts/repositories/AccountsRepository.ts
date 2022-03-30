@@ -1,12 +1,9 @@
-import { Account } from "../model/account";
+import { Account } from "../../../model/account";
 
-interface ICreateAccountDTO {
-    username: string;
-    password: string;
-    email: string;
-}
+import { ICreateAccountDTO } from "../dtos/ICreateAccountDTO";
+import { IAccountsRepository } from "./IAccountsRepository"
 
-class AccountsRepository {
+class AccountsRepository implements IAccountsRepository {
 
     private accounts: Account[];
 

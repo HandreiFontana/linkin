@@ -1,15 +1,9 @@
-import { Link } from "../model/link";
+import { Link } from "../../../model/link";
 
-interface ICreateLinkDTO {
-    title: string,
-    description: string,
-    url: string,
-    created_by: string,
-    category: string,
-    isPrivate: boolean
-}
+import { ICreateLinkDTO } from "../dtos/ICreateLinkDTO";
+import { ILinksRepository } from "./ILinksRepository";
 
-class LinksRepository {
+class LinksRepository implements ILinksRepository {
 
     private links: Link[];
 
