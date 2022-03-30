@@ -6,7 +6,8 @@ class Link {
     description: string;
     url: string;
     category: string;
-    private: boolean;
+    created_by: string;
+    isPrivate?: boolean;
     created_at: Date;
 
     constructor() {

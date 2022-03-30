@@ -4,7 +4,9 @@ interface ICreateLinkDTO {
     title: string,
     description: string,
     url: string,
-    category: string
+    created_by: string,
+    category: string,
+    isPrivate: boolean
 }
 
 class LinksRepository {
@@ -15,14 +17,23 @@ class LinksRepository {
         this.links = [];
     }
 
-    create({ title, description, url, category }: ICreateLinkDTO) {
+    create({
+        title,
+        description,
+        url,
+        created_by,
+        category,
+        isPrivate = false
+    }: ICreateLinkDTO) {
         const link = new Link();
 
         Object.assign(link, {
             title,
             description,
             url,
+            created_by,
             category,
+            isPrivate,
             created_at: new Date()
         })
 
@@ -30,6 +41,7 @@ class LinksRepository {
     }
 
     list(): Link[] {
+
         return this.links;
     }
 }
