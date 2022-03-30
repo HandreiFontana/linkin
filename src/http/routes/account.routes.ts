@@ -2,10 +2,10 @@ import { Router } from 'express';
 
 import { AccountsRepository } from '../../repositories/AccountsRepository';
 
-const usersRoutes = Router();
+const accountsRoutes = Router();
 const accountsRepository = new AccountsRepository();
 
-usersRoutes.post("/", (request, response) => {
+accountsRoutes.post("/", (request, response) => {
     const { username, password, email } = request.body;
 
     accountsRepository.create({ username, password, email })
@@ -13,4 +13,4 @@ usersRoutes.post("/", (request, response) => {
     return response.status(201).send();
 })
 
-export { usersRoutes }
+export { accountsRoutes }
