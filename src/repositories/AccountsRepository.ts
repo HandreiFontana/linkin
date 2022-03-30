@@ -26,10 +26,6 @@ class AccountsRepository {
 
         this.accounts.push(account);
     }
-
-    list(): Account[] {
-        return this.accounts;
-    }
 }
 
 export { AccountsRepository }
