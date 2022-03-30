@@ -1,23 +1,16 @@
 import { Router } from 'express';
-import { Account } from '../../model/account';
+
+import { AccountsRepository } from '../../repositories/AccountsRepository';
 
 const usersRoutes = Router();
-
-const account: Account[] = [];
+const accountsRepository = new AccountsRepository();
 
 usersRoutes.post("/", (request, response) => {
     const { username, password, email } = request.body;
 
-    const account = new Account();
+    accountsRepository.create({ username, password, email })
 
-    Object.assign(account, {
-        username,
-        password,
-        email,
-        created_at: new Date()
-    })
-
-    return response.status(201).json({ account });
+    return response.status(201).send();
 })
 
 export { usersRoutes }
