@@ -26,6 +26,18 @@ class AccountsRepository {
 
         this.accounts.push(account);
     }
+
+    findByUsername(username: string): Account {
+        const account = this.accounts.find(account => account.username === username);
+
+        return account;
+    }
+
+    findByEmail(email: string): Account {
+        const account = this.accounts.find(account => account.email === email);
+
+        return account;
+    }
 }
 
 export { AccountsRepository }
