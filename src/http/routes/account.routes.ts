@@ -13,4 +13,10 @@ accountsRoutes.post("/", (request, response) => {
     return response.status(201).send();
 })
 
+accountsRoutes.get("/", (request, response) => {
+    const all = accountsRepository.list();
+
+    return response.json(all)
+})
+
 export { accountsRoutes }
