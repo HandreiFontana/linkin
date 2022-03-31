@@ -1,0 +1,155 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "linkin Documentation",
+        "description": "This API saves and shares links",
+        "version": "1.0.0",
+        "contact": {
+            "email": "handreifontana@gmail.com"
+        }
+    },
+    "paths": {
+        "/accounts": {
+            "post": {
+                "tags": ["Account"],
+                "summary": "Create an account",
+                "description": "Create a new account",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "username": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "username": "Account username sample",
+                                    "email": "Account e-mail sample",
+                                    "password": "Account password sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "500": {
+                        "description": "Username already exists!"
+                    },
+                    "500": {
+                        "description": "E-mail already exists!"
+                    }
+                }
+            }            
+        },
+        "/links": {
+            "post": {
+                "tags": ["Links"],
+                "summary": "Create a link",
+                "description": "Create a new link",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "title": {
+                                        "type": "string"
+                                    },
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "url": {
+                                        "type": "string"
+                                    },
+                                    "category": {
+                                        "type": "string"
+                                    },
+                                    "created_by": {
+                                        "type": "string"
+                                    },
+                                    "isPrivate": {
+                                        "type": "boolean"
+                                    }
+                                },
+                                "example": {
+                                    "title": "Link title sample",
+                                    "description": "Link description sample",
+                                    "url": "https://github.com/HandreiFontana",
+                                    "category": "Link category sample",
+                                    "created_by": "HandreiFontana",
+                                    "isPrivate": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }            
+        },
+        "/links/{username}": {
+            "get": {
+                "tags": ["Links"],
+                "summary": "List all links",
+                "decription": "List all links",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "Account username",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "description": {
+                                                "type": "string"
+                                            },
+                                            "url": {
+                                                "type": "string"
+                                            },
+                                            "category": {
+                                                "type": "string"
+                                            },
+                                            "created_by": {
+                                                "type": "string"
+                                            },
+                                            "isPrivate": {
+                                                "type": "boolean"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} 

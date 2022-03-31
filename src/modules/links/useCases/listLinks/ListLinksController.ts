@@ -10,7 +10,7 @@ class ListLinksController {
 
         const accountLinks = this.listLinksUseCase.execute(username);
 
-        return response.json(accountLinks);
+        return response.status(200).json(accountLinks);
     }
 }
 
