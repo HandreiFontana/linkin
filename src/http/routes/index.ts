@@ -5,7 +5,7 @@ import { linksRoutes } from './link.routes';
 
 const router = Router();
 
-router.use("/users", accountsRoutes);
+router.use("/accounts", accountsRoutes);
 router.use("/links", linksRoutes);
 
 export { router };
