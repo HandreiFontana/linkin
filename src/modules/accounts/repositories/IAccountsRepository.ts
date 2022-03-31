@@ -1,4 +1,4 @@
-import { Account } from "../../../model/account";
+import { Account } from "../model/account";
 import { ICreateAccountDTO } from "../dtos/ICreateAccountDTO";
 
 interface IAccountsRepository {
