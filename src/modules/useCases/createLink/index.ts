@@ -3,7 +3,7 @@ import { CreateLinkController } from "../../useCases/createLink/CreateLinkContro
 import { CreateLinkUseCase } from "../../useCases/createLink/CreateLinkUseCase";
 
 
-const linksRepository = new LinksRepository();
+const linksRepository = LinksRepository.getInstance();
 
 const createLinkUseCase = new CreateLinkUseCase(linksRepository);
 

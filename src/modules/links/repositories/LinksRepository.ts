@@ -7,8 +7,19 @@ class LinksRepository implements ILinksRepository {
 
     private links: Link[];
 
-    constructor() {
+    private static INSTANCE: LinksRepository;
+
+    private constructor() {
         this.links = [];
+    }
+
+    public static getInstance(): LinksRepository {
+
+        if (!LinksRepository.INSTANCE) {
+            LinksRepository.INSTANCE = new LinksRepository();
+        }
+
+        return LinksRepository.INSTANCE;
     }
 
     create({
