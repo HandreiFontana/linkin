@@ -1,4 +1,4 @@
-import { ILinksRepository } from "../../links/repositories/ILinksRepository";
+import { ILinksRepository } from "../../repositories/ILinksRepository"
 
 interface IRequest {
     title: string,

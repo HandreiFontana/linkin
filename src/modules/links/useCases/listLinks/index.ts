@@ -1,4 +1,4 @@
-import { LinksRepository } from "../../links/repositories/LinksRepository";
+import { LinksRepository } from "../../repositories/LinksRepository";
 import { ListLinksController } from "./ListLinksController";
 import { ListLinksUseCase } from "./ListLinksUseCase";
 

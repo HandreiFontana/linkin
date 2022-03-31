@@ -1,8 +1,7 @@
 import { Router } from 'express';
 
-import { LinksRepository } from '../../modules/links/repositories/LinksRepository';
-import { createLinkController } from '../../modules/useCases/createLink';
-import { listLinksController } from '../../modules/useCases/listLinks';
+import { createLinkController } from '../../modules/links/useCases/createLink';
+import { listLinksController } from '../../modules/links/useCases/listLinks';
 
 const linksRoutes = Router();
 

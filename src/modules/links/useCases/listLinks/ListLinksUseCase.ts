@@ -1,5 +1,5 @@
-import { Link } from "../../links/model/link";
-import { ILinksRepository } from "../../links/repositories/ILinksRepository";
+import { Link } from "../../model/link";
+import { ILinksRepository } from "../../repositories/ILinksRepository";
 
 
 class ListLinksUseCase {
