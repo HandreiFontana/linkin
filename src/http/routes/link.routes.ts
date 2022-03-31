@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
 import { LinksRepository } from '../../modules/links/repositories/LinksRepository';
-import { createLinkController } from '../../modules/links/repositories';
+import { createLinkController } from '../../modules/useCases/createLink';
 
 const linksRoutes = Router();
 const linksRepository = new LinksRepository();

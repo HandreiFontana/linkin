@@ -1,6 +1,6 @@
+import { LinksRepository } from "../../links/repositories/LinksRepository";
 import { CreateLinkController } from "../../useCases/createLink/CreateLinkController";
 import { CreateLinkUseCase } from "../../useCases/createLink/CreateLinkUseCase";
-import { LinksRepository } from "./LinksRepository";
 
 
 const linksRepository = new LinksRepository();
