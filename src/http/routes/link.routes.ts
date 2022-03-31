@@ -1,16 +1,13 @@
 import { Router } from 'express';
-import { LinksRepository } from '../../modules/links/repositories/LinksRepository';
 
+import { LinksRepository } from '../../modules/links/repositories/LinksRepository';
+import { createLinkController } from '../../modules/links/repositories';
 
 const linksRoutes = Router();
 const linksRepository = new LinksRepository();
 
 linksRoutes.post("/", (request, response) => {
-    const { title, description, url, category, created_by, isPrivate } = request.body;
-
-    linksRepository.create({ title, description, url, category, created_by, isPrivate })
-
-    return response.status(201).send();
+    return createLinkController.handle(request, response);
 })
 
 linksRoutes.get("/:username", (request, response) => {
