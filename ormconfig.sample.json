@@ -4,5 +4,12 @@
     "host": "localhost",
     "username": "xxxx",
     "password": "xxxx",
-    "database": "xxxx"
+    "database": "xxxx",
+    "migrations": "./src/modules/typeorm/migrations/*.ts",
+    "entities": [
+        "./src/modules/*/entities/.ts"
+    ],
+    "cli": {
+        "migrationsDir": "./src/typeorm/migrations"
+    }
 }
