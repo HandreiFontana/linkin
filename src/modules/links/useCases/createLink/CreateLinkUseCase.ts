@@ -12,15 +12,15 @@ interface IRequest {
 class CreateLinkUseCase {
     constructor(private linksRepository: ILinksRepository) { }
 
-    execute({
+    async execute({
         title,
         description,
         url,
         created_by,
         category,
         isPrivate
-    }: IRequest) {
-        this.linksRepository.create({
+    }: IRequest): Promise<void> {
+        await this.linksRepository.create({
             title,
             description,
             url,

@@ -6,10 +6,10 @@ class CreateLinkController {
 
     constructor(private createLinkUseCase: CreateLinkUseCase) { }
 
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
         const { title, description, url, category, created_by, isPrivate } = request.body;
 
-        this.createLinkUseCase.execute({
+        await this.createLinkUseCase.execute({
             title,
             description,
             url,

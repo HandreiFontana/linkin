@@ -9,8 +9,8 @@ interface ILinksRepository {
         created_by,
         category,
         isPrivate
-    }: ICreateLinkDTO): void,
-    list(username: string): Link[]
+    }: ICreateLinkDTO): Promise<void>,
+    list(username: string): Promise<Link[]>
 }
 
 export { ILinksRepository }
