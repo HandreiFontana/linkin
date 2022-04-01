@@ -3,10 +3,14 @@ import { CreateLinkController } from "../../useCases/createLink/CreateLinkContro
 import { CreateLinkUseCase } from "../../useCases/createLink/CreateLinkUseCase";
 
 
-const linksRepository = LinksRepository.getInstance();
+export default (): CreateLinkController => {
 
-const createLinkUseCase = new CreateLinkUseCase(linksRepository);
+    const linksRepository = new LinksRepository();
 
-const createLinkController = new CreateLinkController(createLinkUseCase);
+    const createLinkUseCase = new CreateLinkUseCase(linksRepository);
 
-export { createLinkController };
+    const createLinkController = new CreateLinkController(createLinkUseCase);
+
+    return createLinkController
+
+}

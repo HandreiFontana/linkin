@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules --respawn src/http/server.ts",
-    "typeorm": "ts-node-env ./node_modules/typeorm/cli"
+    "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
   },
   "author": "Handrei Fontana <95292655+HandreiFontana@users.noreply.github.com>",
   "license": "MIT",

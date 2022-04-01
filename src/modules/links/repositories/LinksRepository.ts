@@ -1,3 +1,4 @@
+import { getRepository, Repository } from "typeorm";
 import { Link } from "../entities/link";
 
 import { ICreateLinkDTO } from "../dtos/ICreateLinkDTO";
@@ -5,48 +6,36 @@ import { ILinksRepository } from "./ILinksRepository";
 
 class LinksRepository implements ILinksRepository {
 
-    private links: Link[];
+    private repository: Repository<Link>;
 
-    private static INSTANCE: LinksRepository;
-
-    private constructor() {
-        this.links = [];
+    constructor() {
+        this.repository = getRepository(Link);
     }
 
-    public static getInstance(): LinksRepository {
-
-        if (!LinksRepository.INSTANCE) {
-            LinksRepository.INSTANCE = new LinksRepository();
-        }
-
-        return LinksRepository.INSTANCE;
-    }
-
-    create({
+    async create({
         title,
         description,
         url,
         created_by,
         category,
         isPrivate = false
-    }: ICreateLinkDTO) {
-        const link = new Link();
-
-        Object.assign(link, {
+    }: ICreateLinkDTO): Promise<void> {
+        const link = this.repository.create({
             title,
             description,
             url,
             created_by,
             category,
             isPrivate,
-            created_at: new Date()
         })
 
-        this.links.push(link);
+        await this.repository.save(link);
     }
 
-    list(username: string): Link[] {
-        return this.links.filter(link => link.created_by === username)
+    async list(username: string): Promise<Link[]> {
+        const links = await this.repository.find()
+
+        return links.filter(link => link.created_by === username)
     }
 }
 
