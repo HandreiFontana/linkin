@@ -1,4 +1,4 @@
-import { Link } from "../../model/link";
+import { Link } from "../../entities/link";
 import { ILinksRepository } from "../../repositories/ILinksRepository";
 
 

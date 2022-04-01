@@ -1,5 +1,5 @@
 import { ICreateLinkDTO } from '../dtos/ICreateLinkDTO';
-import { Link } from '../model/link';
+import { Link } from '../entities/link';
 
 interface ILinksRepository {
     create({

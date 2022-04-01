@@ -1,4 +1,4 @@
-import { Link } from "../model/link";
+import { Link } from "../entities/link";
 
 import { ICreateLinkDTO } from "../dtos/ICreateLinkDTO";
 import { ILinksRepository } from "./ILinksRepository";

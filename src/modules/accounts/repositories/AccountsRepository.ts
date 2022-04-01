@@ -1,4 +1,4 @@
-import { Account } from "../model/account";
+import { Account } from "../entities/account";
 
 import { ICreateAccountDTO } from "../dtos/ICreateAccountDTO";
 import { IAccountsRepository } from "./IAccountsRepository"
