@@ -3,12 +3,12 @@ import express from "express";
 import swaggerUi from 'swagger-ui-express';
 
 import "../shared/container";
-import '../typeorm'
+import '../shared/infra/typeorm'
 
 import { router } from "./routes";
 import swaggerFile from '../swagger.json'
 
-import createConnection from "../typeorm";
+import createConnection from "../shared/infra/typeorm";
 
 createConnection();
 const app = express();
