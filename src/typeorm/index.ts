@@ -6,7 +6,7 @@ export default async (host = "localhost"): Promise<Connection> => { // host = lo
     return createConnection(
         Object.assign(defaultOptions, {
             host,
-            database: "linkin_db"
+            database: defaultOptions.database
         })
     );
 

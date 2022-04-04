@@ -1,38 +1,42 @@
-import { Account } from "../entities/account";
+import { getRepository, Repository } from "typeorm";
 
 import { ICreateAccountDTO } from "../dtos/ICreateAccountDTO";
 import { IAccountsRepository } from "./IAccountsRepository"
 
+import { Account } from "../entities/account";
+
+
 class AccountsRepository implements IAccountsRepository {
 
-    private accounts: Account[];
+    private repository: Repository<Account>;
 
     constructor() {
-        this.accounts = [];
+        this.repository = getRepository(Account);
     }
 
-    create({ username, password, email }: ICreateAccountDTO) {
-        const account = new Account();
-
-        Object.assign(account, {
+    async create({
+        username,
+        password,
+        email,
+        id
+    }: ICreateAccountDTO): Promise<void> {
+        const account = this.repository.create({
             username,
             password,
             email,
-            created_at: new Date()
+            id
         })
 
-        this.accounts.push(account);
+        await this.repository.save(account);
     }
 
-    findByUsername(username: string): Account {
-        const account = this.accounts.find(account => account.username === username);
-
+    async findByUsername(username: string): Promise<Account> {
+        const account = await this.repository.findOne({ username });
         return account;
     }
 
-    findByEmail(email: string): Account {
-        const account = this.accounts.find(account => account.email === email);
-
+    async findByEmail(email: string): Promise<Account> {
+        const account = await this.repository.findOne({ email });
         return account;
     }
 }
