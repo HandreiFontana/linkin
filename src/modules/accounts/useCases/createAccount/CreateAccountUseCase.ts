@@ -1,15 +1,10 @@
+import { ICreateAccountDTO } from "../../dtos/ICreateAccountDTO";
 import { IAccountsRepository } from "../../repositories/IAccountsRepository";
-
-interface IRequest {
-    username: string;
-    password: string;
-    email: string;
-}
 
 class CreateAccountUseCase {
     constructor(private accountsRepository: IAccountsRepository) { }
 
-    execute({ username, password, email }: IRequest): void {
+    execute({ username, password, email }: ICreateAccountDTO): void {
         const usernameAlreadyExists = this.accountsRepository.findByUsername(username);
 
         if (usernameAlreadyExists) {
