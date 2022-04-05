@@ -1,5 +1,6 @@
 import { ICreateLinkDTO } from '../dtos/ICreateLinkDTO';
-import { Link } from '../entities/link';
+import { Link } from '../typeorm/entities/link';
+
 
 interface ILinksRepository {
     create({

@@ -1,8 +1,9 @@
 import { getRepository, Repository } from "typeorm";
-import { Link } from "../entities/link";
 
 import { ICreateLinkDTO } from "../dtos/ICreateLinkDTO";
+import { Link } from "../typeorm/entities/link";
 import { ILinksRepository } from "./ILinksRepository";
+
 
 class LinksRepository implements ILinksRepository {
 

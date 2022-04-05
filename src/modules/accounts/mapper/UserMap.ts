@@ -1,6 +1,7 @@
 import { classToClass } from "class-transformer";
 import { IAccountResponseDTO } from "../dtos/IAccountResponseDTO";
-import { Account } from "../entities/account";
+import { Account } from "../typeorm/entities/account";
+
 
 class AccountMap {
 

@@ -1,6 +1,6 @@
-import { Account } from "../entities/account";
-
 import { ICreateAccountDTO } from "../dtos/ICreateAccountDTO";
+import { Account } from "../typeorm/entities/account";
+
 
 interface IAccountsRepository {
     create({ username, password, email }: ICreateAccountDTO): Promise<void>;
