@@ -41,8 +41,6 @@ class RefreshTokenUseCase {
                 token,
             );
 
-        console.log(accountToken)
-
         if (!accountToken) {
             throw new AppError("Refresh token does not exists!")
         }
@@ -51,8 +49,10 @@ class RefreshTokenUseCase {
 
         const refresh_token = sign({ email }, auth.secret_refresh_token, {
             subject: sub,
-            expiresIn: auth.secret_refresh_token,
+            expiresIn: auth.expires_in_refresh_token,
         });
+
+        console.log("TESTANDO")
 
         const expires_date = this.dateProvider.addDays(
             auth.expires_refresh_token_days
