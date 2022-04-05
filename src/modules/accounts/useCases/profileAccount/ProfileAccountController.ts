@@ -7,15 +7,11 @@ import { ProfileAccountUseCase } from "./ProfileAccountUseCase";
 class ProfileAccountController {
 
     async handle(request: Request, response: Response): Promise<Response> {
-        // const { username } = request.account;
-
-        const { username } = request.headers;
+        const { id } = request.account;
 
         const profileAccountUseCase = container.resolve(ProfileAccountUseCase);
 
-        const account = await profileAccountUseCase.execute(String(username));
-
-        // const account = await profileAccountUseCase.execute(username);
+        const account = await profileAccountUseCase.execute(id);
 
         return response.json(account);
     }

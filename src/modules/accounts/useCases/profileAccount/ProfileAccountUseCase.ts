@@ -13,8 +13,8 @@ class ProfileAccountUseCase {
         private accountsRepository: IAccountsRepository
     ) { }
 
-    async execute(username: string): Promise<IAccountResponseDTO> {
-        const account = await this.accountsRepository.findByUsername(username);
+    async execute(id: string): Promise<IAccountResponseDTO> {
+        const account = await this.accountsRepository.findById(id);
 
         return AccountMap.toDTO(account);
     }

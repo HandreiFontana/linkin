@@ -39,6 +39,11 @@ class AccountsRepository implements IAccountsRepository {
         const account = await this.repository.findOne({ email });
         return account;
     }
+
+    async findById(id: string): Promise<Account> {
+        const account = await this.repository.findOne({ id });
+        return account;
+    }
 }
 
 export { AccountsRepository }
