@@ -4,14 +4,14 @@ import "express-async-errors";
 import swaggerUi from 'swagger-ui-express';
 import cors from 'cors';
 
-import "../shared/container";
-import '../shared/infra/typeorm'
+import "../../container";
+import '../typeorm'
 
 import { router } from "./routes";
-import swaggerFile from '../swagger.json'
-import { AppError } from "../shared/errors/AppErrors";
+import swaggerFile from '../../../swagger.json'
+import { AppError } from "../../errors/AppErrors";
 
-import createConnection from "../shared/infra/typeorm";
+import createConnection from '../typeorm'
 
 createConnection();
 const app = express();

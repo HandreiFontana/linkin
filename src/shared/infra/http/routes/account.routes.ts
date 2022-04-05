@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import { CreateAccountController } from '../../modules/accounts/useCases/createAccount/CreateAccountController';
-import { ProfileAccountController } from '../../modules/accounts/useCases/profileAccount/ProfileAccountController';
+import { CreateAccountController } from '../../../../modules/accounts/useCases/createAccount/CreateAccountController';
+import { ProfileAccountController } from '../../../../modules/accounts/useCases/profileAccount/ProfileAccountController';
 
 
 const accountsRoutes = Router();

@@ -1,12 +1,13 @@
 import { Router } from 'express';
 
-import createLinkController from '../../modules/links/useCases/createLink';
-import { listLinksController } from '../../modules/links/useCases/listLinks';
+import { CreateLinkController } from '../../../../modules/links/useCases/createLink/CreateLinkController';
+import { listLinksController } from '../../../../modules/links/useCases/listLinks';
+
 
 const linksRoutes = Router();
 
 linksRoutes.post("/", (request, response) => {
-    return createLinkController().handle(request, response);
+    return CreateLinkController().handle(request, response);
 })
 
 linksRoutes.get("/:username", (request, response) => {
