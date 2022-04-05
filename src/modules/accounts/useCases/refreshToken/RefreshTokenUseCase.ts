@@ -52,8 +52,6 @@ class RefreshTokenUseCase {
             expiresIn: auth.expires_in_refresh_token,
         });
 
-        console.log("TESTANDO")
-
         const expires_date = this.dateProvider.addDays(
             auth.expires_refresh_token_days
         )
