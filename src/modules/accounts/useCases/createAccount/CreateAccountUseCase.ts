@@ -4,6 +4,7 @@ import { hash } from "bcrypt"
 import { ICreateAccountDTO } from "../../dtos/ICreateAccountDTO";
 import { IAccountsRepository } from "../../repositories/IAccountsRepository";
 
+import { AppError } from "../../../../shared/errors/AppErrors";
 
 @injectable()
 class CreateAccountUseCase {
@@ -14,20 +15,20 @@ class CreateAccountUseCase {
     ) { }
 
     async execute({ username, password, email }: ICreateAccountDTO): Promise<void> {
-        const usernameAlreadyExists = await this.accountsRepository.findByUsername(username);
+        const emailAlreadyExists = await this.accountsRepository
+            .findByEmail(email);
+
+        if (emailAlreadyExists) {
+            throw new AppError("E-mail already exists")
+        }
+
+        const usernameAlreadyExists = await this.accountsRepository
+            .findByUsername(username);
 
 
         if (usernameAlreadyExists) {
-            throw new Error("Username already exists!")
+            throw new AppError("Username already exists")
         }
-
-        const emailAlreadyExists = await this.accountsRepository.findByEmail(email);
-
-        if (emailAlreadyExists) {
-            throw new Error("E-mail already exists")
-        }
-
-        console.log(typeof (password))
 
         const passwordHash = await hash(password, 8);
 
