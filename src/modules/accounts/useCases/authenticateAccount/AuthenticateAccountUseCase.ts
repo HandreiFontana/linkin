@@ -78,7 +78,6 @@ class AuthenticateAccountUseCase {
             refresh_token,
             expires_date: refresh_token_expires_date
         });
-        console.log("TESTANDO")
 
         const tokenReturn: IResponse = {
             token,
