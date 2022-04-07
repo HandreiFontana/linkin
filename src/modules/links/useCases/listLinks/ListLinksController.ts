@@ -1,14 +1,18 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
+
 import { ListLinksUseCase } from "./ListLinksUseCase";
 
 
 class ListLinksController {
-    constructor(private listLinksUseCase: ListLinksUseCase) { }
 
-    handle(request: Request, response: Response): Response {
+    async handle(request: Request, response: Response): Promise<Response> {
+
         const { username } = request.params;
 
-        const accountLinks = this.listLinksUseCase.execute(username);
+        const listLinksUseCase = container.resolve(ListLinksUseCase)
+
+        const accountLinks = await listLinksUseCase.execute(username);
 
         return response.status(200).json(accountLinks);
     }
