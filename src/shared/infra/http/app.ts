@@ -9,7 +9,7 @@ import '../typeorm'
 
 import { router } from "./routes";
 import swaggerFile from '../../../swagger.json'
-import { AppError } from "../../errors/AppErrors";
+import { AppError } from "../../errors/app-errors";
 
 import createConnection from '../typeorm'
 

@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { CreateLinkController } from '../../../../modules/links/useCases/createLink/CreateLinkController';
-import { DeleteLinkController } from '../../../../modules/links/useCases/deleteLink/DeleteLinkController';
-import { ListLinksController } from '../../../../modules/links/useCases/listLinks/ListLinksController';
+import { CreateLinkController } from '../../../../modules/links/use-cases/create-link/create-link-controller';
+import { DeleteLinkController } from '../../../../modules/links/use-cases/delete-link/delete-link-controller';
+import { ListLinksController } from '../../../../modules/links/use-cases/list-links/list-links-controller';
 
-import { ensureAuthenticated } from '../middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '../middlewares/ensure-authenticated';
 
 
 const linksRoutes = Router();

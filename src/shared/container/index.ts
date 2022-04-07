@@ -3,14 +3,14 @@ import { container } from "tsyringe";
 import "../container/providers";
 
 
-import { AccountsRepository } from "../../modules/accounts/typeorm/repositories/AccountsRepository";
-import { IAccountsRepository } from "../../modules/accounts/repositories/IAccountsRepository";
+import { IAccountsRepository } from "../../modules/accounts/repositories/i-accounts-repository";
+import { AccountsRepository } from "../../modules/accounts/typeorm/repositories/accounts-repository";
 
-import { IAccountsTokensRepository } from "../../modules/accounts/repositories/IAccountsTokensRepository";
-import { AccountsTokensRepository } from "../../modules/accounts/typeorm/repositories/AccountsTokensRepository";
+import { IAccountsTokensRepository } from "../../modules/accounts/repositories/i-accounts-tokens-repository";
+import { AccountsTokensRepository } from "../../modules/accounts/typeorm/repositories/accounts-tokens-repository";
 
-import { ILinksRepository } from "../../modules/links/repositories/ILinksRepository";
-import { LinksRepository } from "../../modules/links/typeorm/repositories/LinksRepository";
+import { ILinksRepository } from "../../modules/links/repositories/i-links-repository";
+import { LinksRepository } from "../../modules/links/typeorm/repositories/links-repository";
 
 
 container.registerSingleton<IAccountsRepository>(

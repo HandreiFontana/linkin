@@ -1,1 +1,1 @@
-import "./DateProvider";
+import "./date-provider";
