@@ -12,7 +12,9 @@ interface ILinksRepository {
         category,
         isPrivate
     }: ICreateLinkDTO): Promise<void>,
-    list(username: string): Promise<Link[]>
+    list(username: string): Promise<Link[]>,
+    findById(id: string): Promise<Link>,
+    delete(link: Link): Promise<void>,
 }
 
 export { ILinksRepository }
