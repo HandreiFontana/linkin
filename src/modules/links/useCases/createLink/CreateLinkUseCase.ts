@@ -1,30 +1,30 @@
+import { inject, injectable } from "tsyringe"
+
+import { ICreateLinkDTO } from "../../dtos/ICreateLinkDTO"
 import { ILinksRepository } from "../../repositories/ILinksRepository"
 
-interface IRequest {
-    title: string,
-    description: string,
-    url: string,
-    created_by: string,
-    category: string,
-    isPrivate?: boolean
-}
 
+@injectable()
 class CreateLinkUseCase {
-    constructor(private linksRepository: ILinksRepository) { }
+
+    constructor(
+        @inject("LinksRepository")
+        private linksRepository: ILinksRepository
+    ) { }
 
     async execute({
         title,
         description,
         url,
-        created_by,
+        account_id,
         category,
         isPrivate
-    }: IRequest): Promise<void> {
+    }: ICreateLinkDTO): Promise<void> {
         await this.linksRepository.create({
             title,
             description,
             url,
-            created_by,
+            account_id,
             category,
             isPrivate
         })

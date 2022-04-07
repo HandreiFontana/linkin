@@ -4,10 +4,11 @@ import { Link } from '../typeorm/entities/link';
 
 interface ILinksRepository {
     create({
+        id,
         title,
         description,
         url,
-        created_by,
+        account_id,
         category,
         isPrivate
     }: ICreateLinkDTO): Promise<void>,

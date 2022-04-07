@@ -1,24 +1,28 @@
 import { Request, Response } from "express";
+import { container } from "tsyringe";
 import { CreateLinkUseCase } from "./CreateLinkUseCase";
 
 
 class CreateLinkController {
 
-    constructor(private createLinkUseCase: CreateLinkUseCase) { }
-
     async handle(request: Request, response: Response): Promise<Response> {
-        const { title, description, url, category, created_by, isPrivate } = request.body;
 
-        await this.createLinkUseCase.execute({
+        const { id: account_id } = request.account;
+
+        const { title, description, url, category, isPrivate } = request.body;
+
+        const createLinkUseCase = container.resolve(CreateLinkUseCase)
+
+        const link = await createLinkUseCase.execute({
             title,
             description,
             url,
             category,
-            created_by,
+            account_id,
             isPrivate
         });
 
-        return response.status(201).send();
+        return response.status(201).json(link);
     }
 }
 

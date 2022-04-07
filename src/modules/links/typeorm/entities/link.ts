@@ -1,5 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm"
+import {
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    PrimaryColumn
+} from "typeorm";
 import { v4 as uuidV4 } from 'uuid';
+
+import { Account } from "../../../accounts/typeorm/entities/account";
 
 @Entity("links")
 class Link {
@@ -19,10 +28,14 @@ class Link {
     category: string;
 
     @Column()
-    created_by: string;
+    account_id: string;
+
+    @ManyToOne(() => Account)
+    @JoinColumn({ name: "account_id" })
+    account: Account;
 
     @Column()
-    isPrivate?: boolean;
+    isPrivate: boolean;
 
     @CreateDateColumn()
     created_at: Date;

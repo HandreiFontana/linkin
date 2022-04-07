@@ -1,10 +1,11 @@
 interface ICreateLinkDTO {
+    id?: string;
     title: string,
     description: string,
     url: string,
-    created_by: string,
+    account_id: string,
     category: string,
-    isPrivate: boolean
+    isPrivate?: boolean
 };
 
 export { ICreateLinkDTO };
