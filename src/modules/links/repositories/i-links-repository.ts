@@ -10,7 +10,7 @@ interface ILinksRepository {
         description,
         url,
         account_id,
-        category,
+        category_id,
         isPrivate
     }: ICreateLinkDTO): Promise<void>,
     list(username: string): Promise<Link[]>,

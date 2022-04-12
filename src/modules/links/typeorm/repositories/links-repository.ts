@@ -20,7 +20,7 @@ class LinksRepository implements ILinksRepository {
         description,
         url,
         account_id,
-        category,
+        category_id,
         isPrivate = false,
     }: ICreateLinkDTO): Promise<void> {
         const link = this.repository.create({
@@ -29,7 +29,7 @@ class LinksRepository implements ILinksRepository {
             description,
             url,
             account_id,
-            category,
+            category_id,
             isPrivate,
         })
 

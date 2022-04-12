@@ -26,6 +26,12 @@ class CategoriesRepository implements ICategoriesRepository {
         return categories.filter(category => category.account_id === account_id)
     }
 
+    async findById(id: string): Promise<Category> {
+        const category = this.repository.findOne(id);
+
+        return category;
+    }
+
 }
 
 export { CategoriesRepository }

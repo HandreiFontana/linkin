@@ -13,7 +13,7 @@ const createLinkController = new CreateLinkController()
 const listLinksController = new ListLinksController()
 const deleteLinkController = new DeleteLinkController()
 
-linksRoutes.post("/", ensureAuthenticated, createLinkController.handle)
+linksRoutes.post("/:category_id", ensureAuthenticated, createLinkController.handle)
 
 linksRoutes.get("/:username", listLinksController.handle)
 

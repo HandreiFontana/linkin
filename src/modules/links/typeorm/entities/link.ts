@@ -9,6 +9,7 @@ import {
 import { v4 as uuidV4 } from 'uuid';
 
 import { Account } from "../../../accounts/typeorm/entities/account";
+import { Category } from "../../../categories/typeorm/entities/category";
 
 @Entity("links")
 class Link {
@@ -25,7 +26,11 @@ class Link {
     url: string;
 
     @Column()
-    category: string;
+    category_id: string;
+
+    @ManyToOne(() => Category)
+    @JoinColumn({ name: "category_id" })
+    category: Category;
 
     @Column()
     account_id: string;

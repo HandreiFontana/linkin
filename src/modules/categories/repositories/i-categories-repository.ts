@@ -5,7 +5,8 @@ import { Category } from "../typeorm/entities/category"
 
 interface ICategoriesRepository {
     create({ id, name, account_id }: ICreateCategoryDTO): Promise<void>,
-    list(account_id: string): Promise<Category[]>
+    list(account_id: string): Promise<Category[]>,
+    findById(id: string): Promise<Category>
 }
 
 export { ICategoriesRepository }

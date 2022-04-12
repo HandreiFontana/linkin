@@ -10,7 +10,9 @@ class CreateLinkController {
 
         const { id: account_id } = request.account;
 
-        const { title, description, url, category, isPrivate } = request.body;
+        const { category_id } = request.params;
+
+        const { title, description, url, isPrivate } = request.body;
 
         const createLinkUseCase = container.resolve(CreateLinkUseCase)
 
@@ -18,7 +20,7 @@ class CreateLinkController {
             title,
             description,
             url,
-            category,
+            category_id,
             account_id,
             isPrivate
         });
