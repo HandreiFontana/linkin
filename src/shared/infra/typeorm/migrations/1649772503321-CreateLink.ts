@@ -25,8 +25,8 @@ export class CreateLink1649350535697 implements MigrationInterface {
                         type: "varchar",
                     },
                     {
-                        name: "category",
-                        type: "varchar",
+                        name: "category_id",
+                        type: "uuid",
                     },
                     {
                         name: "account_id",
@@ -44,10 +44,18 @@ export class CreateLink1649350535697 implements MigrationInterface {
                 ],
                 foreignKeys: [
                     {
-                        name: "FKCreateLink",
+                        name: "FKUserId",
                         referencedTableName: "accounts",
                         referencedColumnNames: ["id"],
                         columnNames: ["account_id"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE",
+                    },
+                    {
+                        name: "FKCategoryId",
+                        referencedTableName: "categories",
+                        referencedColumnNames: ["id"],
+                        columnNames: ["category_id"],
                         onDelete: "CASCADE",
                         onUpdate: "CASCADE",
                     },
