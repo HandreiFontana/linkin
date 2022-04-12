@@ -3,3 +3,4 @@ yarn.lock
 .dockerignore
 docker-compose.yml
 ormconfig.json
+.env
