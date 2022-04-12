@@ -12,6 +12,9 @@ import { AccountsTokensRepository } from "../../modules/accounts/typeorm/reposit
 import { ILinksRepository } from "../../modules/links/repositories/i-links-repository";
 import { LinksRepository } from "../../modules/links/typeorm/repositories/links-repository";
 
+import { ICategoriesRepository } from "../../modules/categories/repositories/i-categories-repository";
+import { CategoriesRepository } from "../../modules/categories/typeorm/repositories/categories-repository";
+
 
 container.registerSingleton<IAccountsRepository>(
     "AccountsRepository",
@@ -26,4 +29,9 @@ container.registerSingleton<IAccountsTokensRepository>(
 container.registerSingleton<ILinksRepository>(
     "LinksRepository",
     LinksRepository
+)
+
+container.registerSingleton<ICategoriesRepository>(
+    "CategoriesRepository",
+    CategoriesRepository
 )
