@@ -43,20 +43,201 @@
                     "201": {
                         "description": "Created"
                     },
-                    "500": {
+                    "400": {
                         "description": "Username already exists!"
                     },
-                    "500": {
+                    "401": {
                         "description": "E-mail already exists!"
                     }
                 }
-            }            
+            }
         },
-        "/links": {
+        "/accounts/profile": {
+            "get": {
+                "tags": ["Account"],
+                "summary": "Profile account",
+                "decription": "Get the account profile",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "name": {
+                                            "type": "string"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }        
+        },
+        "/sessions": {
+            "post": {
+                "tags": ["Authenticate"],
+                "summary": "Authorize an account",
+                "description": "Authorize a new session",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "email": "Account e-mail sample",
+                                    "password": "Account password sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Email or password incorrect!"
+                    }
+                }
+            }
+        },
+        "/refresh-token": {
+            "post": {
+                "tags": ["Authenticate"],
+                "summary": "Refresh a token",
+                "description": "Refresh an access token",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "token": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "token": "Put the refresh token here"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Refresh token invalid!"
+                    }
+                }
+            } 
+        },
+        "/password/reset?token": {
+            "post": {
+                "tags": ["Password"],
+                "summary": "Reset the password",
+                "description": "Create a new password",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "query",
+                        "description": "refresh token account",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "password": "Put here the new password"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Token Invalid!"
+                    }
+                }
+            }     
+        },
+        "/password/forgot": {
+            "post": {
+                "tags": ["Password"],
+                "summary": "Send a forgot password e-mail",
+                "description": "Send a forgot password e-mail",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "email": "Put here the e-mail account"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Account does not exists!"
+                    }
+                }
+            }     
+        },
+        "/links/{category_id}": {
             "post": {
                 "tags": ["Links"],
                 "summary": "Create a link",
                 "description": "Create a new link",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id",
+                        "required": true
+                    }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -72,22 +253,15 @@
                                     "url": {
                                         "type": "string"
                                     },
-                                    "category": {
-                                        "type": "string"
-                                    },
-                                    "created_by": {
-                                        "type": "string"
-                                    },
                                     "isPrivate": {
-                                        "type": "boolean"
+                                        "type": "boolean",
+                                        "default": false
                                     }
                                 },
                                 "example": {
                                     "title": "Link title sample",
                                     "description": "Link description sample",
-                                    "url": "https://github.com/HandreiFontana",
-                                    "category": "Link category sample",
-                                    "created_by": "HandreiFontana",
+                                    "url": "Url sample",
                                     "isPrivate": false
                                 }
                             }
@@ -101,16 +275,25 @@
                 }
             }            
         },
-        "/links/{username}": {
+        "/links/{username}/{category_id}": {
             "get": {
                 "tags": ["Links"],
                 "summary": "List all links",
                 "decription": "List all links",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
                 "parameters": [
                     {
                         "name": "username",
                         "in": "path",
                         "description": "Account username",
+                        "required": true
+                    },
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id",
                         "required": true
                     }
                 ],
@@ -133,10 +316,10 @@
                                             "url": {
                                                 "type": "string"
                                             },
-                                            "category": {
+                                            "category_id": {
                                                 "type": "string"
                                             },
-                                            "created_by": {
+                                            "account_id": {
                                                 "type": "string"
                                             },
                                             "isPrivate": {
@@ -149,6 +332,108 @@
                         }
                     }
                 }
+            }
+        },
+        "/links/{link_id}": {
+            "delete": {
+                "tags": ["Links"],
+                "summary": "Delete a link",
+                "description": "Delete a link",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "name": "link_id",
+                        "in": "path",
+                        "description": "Link id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    }
+                }
+            } 
+        },
+        "/categories": {
+            "post": {
+                "tags": ["Categories"],
+                "summary": "Create a category",
+                "description": "Create a new category",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Category name sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    }
+                }
+            }            
+        },
+        "/categories/{username}": {
+            "get": {
+                "tags": ["Categories"],
+                "summary": "List all categories",
+                "decription": "List all categories",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "Account username",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "account_id": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }        
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
             }
         }
     }
