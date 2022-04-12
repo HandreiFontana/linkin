@@ -8,11 +8,11 @@ class ListLinksController {
 
     async handle(request: Request, response: Response): Promise<Response> {
 
-        const { username } = request.params;
+        const { username, category_id } = request.params;
 
         const listLinksUseCase = container.resolve(ListLinksUseCase)
 
-        const accountLinks = await listLinksUseCase.execute(username);
+        const accountLinks = await listLinksUseCase.execute(username, category_id);
 
         return response.status(200).json(accountLinks);
     }
