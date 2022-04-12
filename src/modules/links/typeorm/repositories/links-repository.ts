@@ -42,10 +42,11 @@ class LinksRepository implements ILinksRepository {
         return links.filter(link => link.account_id === account_id)
     }
 
-    async findById(id: string): Promise<Link[]> {
-        const links = await this.repository.find()
+    async findById(id: string): Promise<Link> {
+        console.log(id)
+        const link = await this.repository.findOne(id);
 
-        return links.filter(link => link.id === id)
+        return link;
     }
 
     async delete(link: Link): Promise<void> {

@@ -17,6 +17,6 @@ linksRoutes.post("/:category_id", ensureAuthenticated, createLinkController.hand
 
 linksRoutes.get("/:username/:category_id", listLinksController.handle)
 
-linksRoutes.delete("/:linkId", ensureAuthenticated, deleteLinkController.handle)
+linksRoutes.delete("/:link_id", ensureAuthenticated, deleteLinkController.handle)
 
 export { linksRoutes }

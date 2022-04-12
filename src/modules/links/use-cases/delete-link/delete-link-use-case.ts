@@ -6,7 +6,7 @@ import { AppError } from "../../../../shared/errors/app-errors";
 
 
 interface IRequest {
-    linkId: string;
+    link_id: string;
     account_id: string;
 }
 
@@ -18,10 +18,10 @@ class DeleteLinkUseCase {
         private linksRepository: ILinksRepository
     ) { }
 
-    async execute({ linkId, account_id }: IRequest): Promise<void> {
-        const link = await this.linksRepository.findById(linkId);
+    async execute({ link_id, account_id }: IRequest): Promise<void> {
+        const link = await this.linksRepository.findById(link_id);
 
-        if (link.account_id !== account_id) {
+        if (!link || (link.account_id !== account_id)) {
             throw new AppError("Unauthorized", 401)
         }
 
