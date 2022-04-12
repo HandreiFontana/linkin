@@ -17,7 +17,11 @@ class ListLinksUseCase {
         private accountsRepository: IAccountsRepository
     ) { }
 
-    async execute(username: string, category_id: string): Promise<Link[]> {
+    async execute(
+        username: string,
+        category_id: string,
+        account_id: string
+    ): Promise<Link[]> {
         const account = await this.accountsRepository.findByUsername(username);
 
         const accountMapper = AccountMap.toDTO(account);
@@ -27,6 +31,14 @@ class ListLinksUseCase {
         const linksWithCategory = links.filter(
             link => link.category_id === category_id
         )
+
+        if (!(account.id === account_id)) {
+            const linksPublicWithCategory = linksWithCategory.filter(
+                link => link.isPrivate === false
+            )
+
+            return linksPublicWithCategory;
+        };
 
         return linksWithCategory;
     }

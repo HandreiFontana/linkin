@@ -10,9 +10,15 @@ class ListLinksController {
 
         const { username, category_id } = request.params;
 
+        const { id: account_id } = request.account;
+
         const listLinksUseCase = container.resolve(ListLinksUseCase)
 
-        const accountLinks = await listLinksUseCase.execute(username, category_id);
+        const accountLinks = await listLinksUseCase.execute(
+            username,
+            category_id,
+            account_id
+        );
 
         return response.status(200).json(accountLinks);
     }
