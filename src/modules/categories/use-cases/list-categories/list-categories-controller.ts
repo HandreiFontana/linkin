@@ -12,9 +12,9 @@ class ListCategoriesController {
 
         const listCategoriesUseCase = container.resolve(ListCategoriesUseCase);
 
-        const categoriesLinks = await listCategoriesUseCase.execute(username);
+        const categories = await listCategoriesUseCase.execute(username);
 
-        return response.status(200).json(categoriesLinks)
+        return response.status(200).json(categories)
     }
 }
 
