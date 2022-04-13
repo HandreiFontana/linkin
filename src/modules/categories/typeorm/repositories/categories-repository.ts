@@ -32,6 +32,9 @@ class CategoriesRepository implements ICategoriesRepository {
         return category;
     }
 
+    async delete(category: Category): Promise<void> {
+        await this.repository.remove(category)
+    }
 }
 
 export { CategoriesRepository }
