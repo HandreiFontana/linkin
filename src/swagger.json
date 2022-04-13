@@ -145,7 +145,7 @@
                         "description": "Success"
                     },
                     "400": {
-                        "description": "Refresh token invalid!"
+                        "description": "Refresh token does not exists!"
                     }
                 }
             } 
@@ -271,6 +271,9 @@
                 "responses": {
                     "201": {
                         "description": "Created"
+                    },
+                    "400": {
+                        "description": "Token missing"
                     }
                 }
             }            
@@ -353,6 +356,9 @@
                 "responses": {
                     "204": {
                         "description": "Deleted"
+                    },
+                    "400": {
+                        "description": "Token missing"
                     }
                 }
             } 
@@ -385,6 +391,9 @@
                 "responses": {
                     "201": {
                         "description": "Created"
+                    },
+                    "400": {
+                        "description": "Token missing"
                     }
                 }
             }            
@@ -426,7 +435,33 @@
                     }
                 }
             }
-        }        
+        },
+        "/categories/{category_id}": {
+            "delete": {
+                "tags": ["Categories"],
+                "summary": "Delete a categorie",
+                "description": "Delete a category and every link with it",
+                "security": [
+                    { "bearerAuth": [] }
+                ],
+                "parameters": [
+                    {
+                        "name": "category_id",
+                        "in": "path",
+                        "description": "Category id",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Deleted"
+                    },
+                    "400": {
+                        "description": "Token missing"
+                    }
+                }
+            } 
+        }  
     },
     "components": {
         "securitySchemes": {
