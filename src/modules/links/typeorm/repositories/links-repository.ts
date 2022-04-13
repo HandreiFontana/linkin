@@ -43,7 +43,6 @@ class LinksRepository implements ILinksRepository {
     }
 
     async findById(id: string): Promise<Link> {
-        console.log(id)
         const link = await this.repository.findOne(id);
 
         return link;

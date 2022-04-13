@@ -70,13 +70,9 @@ class AuthenticateAccountUseCase {
             expiresIn: expires_in_refresh_token,
         });
 
-        console.log(account.id, refresh_token)
-
         const accountToken = await this.accountsTokensRepository.findByAccountId(
             account.id
         )
-
-        console.log(accountToken)
 
         if (accountToken) {
             await this.accountsTokensRepository.deleteById(accountToken.id)
