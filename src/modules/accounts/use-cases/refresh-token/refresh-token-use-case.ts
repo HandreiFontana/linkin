@@ -28,6 +28,15 @@ class RefreshTokenUseCase {
     ) { }
 
     async execute(token: string): Promise<ITokenResponse> {
+
+        const refreshTokenAccount = await this
+            .accountsTokensRepository
+            .findByRefreshToken(token)
+
+        if (!refreshTokenAccount) {
+            throw new AppError("Refresh token does not exists!")
+        }
+
         const { email, sub } = verify(
             token,
             auth.secret_refresh_token,
@@ -40,10 +49,6 @@ class RefreshTokenUseCase {
                 account_id,
                 token,
             );
-
-        if (!accountToken) {
-            throw new AppError("Refresh token does not exists!")
-        }
 
         await this.accountsTokensRepository.deleteById(accountToken.id);
 
