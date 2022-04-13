@@ -50,6 +50,12 @@ class AccountsTokensRepository implements IAccountsTokensRepository {
 
         return accountToken;
     }
+
+    async findByAccountId(account_id: string): Promise<AccountTokens> {
+        const accountToken = await this.repository.findOne({ account_id })
+
+        return accountToken
+    }
 }
 
 export { AccountsTokensRepository };

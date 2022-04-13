@@ -14,6 +14,7 @@ interface IAccountsTokensRepository {
     ): Promise<AccountTokens>;
     deleteById(id: string): Promise<void>;
     findByRefreshToken(refresh_token: string): Promise<AccountTokens>;
+    findByAccountId(account_id: string): Promise<AccountTokens>;
 }
 
 export { IAccountsTokensRepository }
