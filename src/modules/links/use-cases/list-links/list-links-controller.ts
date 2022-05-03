@@ -8,7 +8,7 @@ class ListLinksController {
 
     async handle(request: Request, response: Response): Promise<Response> {
 
-        const { username, category_id } = request.params;
+        const { username } = request.params;
 
         const { id: account_id } = request.account;
 
@@ -16,7 +16,6 @@ class ListLinksController {
 
         const accountLinks = await listLinksUseCase.execute(
             username,
-            category_id,
             account_id
         );
 

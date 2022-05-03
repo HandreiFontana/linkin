@@ -19,7 +19,6 @@ class ListLinksUseCase {
 
     async execute(
         username: string,
-        category_id: string,
         account_id: string
     ): Promise<Link[]> {
         const account = await this.accountsRepository.findByUsername(username);
@@ -28,19 +27,15 @@ class ListLinksUseCase {
 
         const links = await this.linksRepository.list(accountMapper.id);
 
-        const linksWithCategory = links.filter(
-            link => link.category_id === category_id
-        )
-
-        if (!(account.id === account_id)) {
-            const linksPublicWithCategory = linksWithCategory.filter(
+        if (account.id !== account_id) {
+            const linksPublic = links.filter(
                 link => link.isPrivate === false
             )
 
-            return linksPublicWithCategory;
+            return linksPublic;
         };
 
-        return linksWithCategory;
+        return links;
     }
 }
 

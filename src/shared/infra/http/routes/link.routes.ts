@@ -16,7 +16,7 @@ const deleteLinkController = new DeleteLinkController()
 
 linksRoutes.post("/:category_id", ensureAuthenticated, createLinkController.handle)
 
-linksRoutes.get("/:username/:category_id", catchAccount, listLinksController.handle)
+linksRoutes.get("/:username", catchAccount, listLinksController.handle)
 
 linksRoutes.delete("/:link_id", ensureAuthenticated, deleteLinkController.handle)
 
