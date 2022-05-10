@@ -1,9 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { ICreateAccountDTO } from "../../dtos/i-create-account-dto";
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-
-import { Account } from "../entities/account";
+import { ICreateAccountDTO } from "@modules/accounts/dtos";
+import { IAccountsRepository } from "@modules/accounts/repositories";
+import { Account } from "@modules/accounts/typeorm/entities";
 
 
 class AccountsRepository implements IAccountsRepository {

@@ -28,12 +28,12 @@ class Link {
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id", nullable: true })
     category: Category;
-    category_id: string;
+    categoryId: string;
 
     @ManyToOne(() => Account)
     @JoinColumn({ name: "account_id", nullable: true })
     account: Account;
-    account_id: string;
+    accountId: string;
 
     @Column({ name: "isPrivate", nullable: true })
     isPrivate: boolean;

@@ -1,10 +1,10 @@
 import { Router } from 'express';
 
-import { CreateCategoryController } from '../../../../modules/categories/use-cases/create-category/create-category-controller';
-import { DeleteCategoryController } from '../../../../modules/categories/use-cases/delete-category/delete-category-controller';
-import { ListCategoriesController } from '../../../../modules/categories/use-cases/list-categories/list-categories-controller';
+import { CreateCategoryController } from '@modules/categories/use-cases/create-category';
+import { DeleteCategoryController } from '@modules/categories/use-cases/delete-category';
+import { ListCategoriesController } from '@modules/categories/use-cases/list-categories';
 
-import { ensureAuthenticated } from '../middlewares/ensure-authenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 
 
 const categoriesRoutes = Router();

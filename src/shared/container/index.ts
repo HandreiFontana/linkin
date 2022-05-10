@@ -3,17 +3,20 @@ import { container } from "tsyringe";
 import "../container/providers";
 
 
-import { IAccountsRepository } from "../../modules/accounts/repositories/i-accounts-repository";
-import { AccountsRepository } from "../../modules/accounts/typeorm/repositories/accounts-repository";
+import {
+    IAccountsRepository,
+    IAccountsTokensRepository
+} from "@modules/accounts/repositories";
+import {
+    AccountsRepository,
+    AccountsTokensRepository
+} from "@modules/accounts/typeorm/repositories";
 
-import { IAccountsTokensRepository } from "../../modules/accounts/repositories/i-accounts-tokens-repository";
-import { AccountsTokensRepository } from "../../modules/accounts/typeorm/repositories/accounts-tokens-repository";
+import { ILinksRepository } from "@modules/links/repositories";
+import { LinksRepository } from "@modules/links/typeorm/repositories";
 
-import { ILinksRepository } from "../../modules/links/repositories/i-links-repository";
-import { LinksRepository } from "../../modules/links/typeorm/repositories/links-repository";
-
-import { ICategoriesRepository } from "../../modules/categories/repositories/i-categories-repository";
-import { CategoriesRepository } from "../../modules/categories/typeorm/repositories/categories-repository";
+import { ICategoriesRepository } from "@modules/categories/repositories";
+import { CategoriesRepository } from "@modules/categories/typeorm/repositories";
 
 
 container.registerSingleton<IAccountsRepository>(

@@ -1,9 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { ILinksRepository } from "../../repositories/i-links-repository";
-import { ICreateLinkDTO } from "../../dtos/i-create-link-dto";
-
-import { Link } from "../entities/link";
+import { ILinksRepository } from "@modules/links/repositories";
+import { ICreateLinkDTO } from "@modules/links/dtos";
+import { Link } from "@modules/links/typeorm/entities";
 
 
 class LinksRepository implements ILinksRepository {
@@ -19,8 +18,8 @@ class LinksRepository implements ILinksRepository {
         title,
         description,
         url,
-        account_id,
-        category_id,
+        accountId,
+        categoryId,
         isPrivate = false,
     }: ICreateLinkDTO): Promise<void> {
         const link = this.repository.create({
@@ -28,18 +27,20 @@ class LinksRepository implements ILinksRepository {
             title,
             description,
             url,
-            account_id,
-            category_id,
+            accountId,
+            categoryId,
             isPrivate,
         })
 
         await this.repository.save(link);
     }
 
-    async list(account_id: string): Promise<Link[]> {
+    async list(accountId: string): Promise<Link[]> {
         const links = await this.repository.find()
 
-        return links.filter(link => link.account_id === account_id)
+        console.log(links)
+
+        return links.filter(link => link.accountId === accountId)
     }
 
     async findById(id: string): Promise<Link> {

@@ -2,13 +2,15 @@ import { inject, injectable } from "tsyringe";
 import { sign } from "jsonwebtoken";
 import { compare } from "bcrypt";
 
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-import { IAccountsTokensRepository } from "../../repositories/i-accounts-tokens-repository";
+import {
+    IAccountsRepository,
+    IAccountsTokensRepository
+} from "@modules/accounts/repositories";
 
-import { IDateProvider } from "../../../../shared/container/providers/date-provider/i-date-provider";
+import { AppError } from "@shared/errors";
+import { IDateProvider } from "@shared/container/providers/date-provider/i-date-provider";
 
-import auth from "../../../../config/auth";
-import { AppError } from "../../../../shared/errors/app-errors";
+import auth from "@config/auth";
 
 
 interface IRequest {

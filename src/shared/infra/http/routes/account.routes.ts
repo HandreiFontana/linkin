@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import { CreateAccountController } from '../../../../modules/accounts/use-cases/create-account/create-account-controller';
-import { ProfileAccountController } from '../../../../modules/accounts/use-cases/profile-account/profile-account-controller';
+import { CreateAccountController } from '@modules/accounts/use-cases/create-account';
+import { ProfileAccountController } from '@modules/accounts/use-cases/profile-account';
 
-import { ensureAuthenticated } from '../middlewares/ensure-authenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensure-authenticated';
 
 
 const accountsRoutes = Router();

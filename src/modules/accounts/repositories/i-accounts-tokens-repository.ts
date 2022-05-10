@@ -1,5 +1,5 @@
-import { ICreateAccountTokenDTO } from "../dtos/i-create-account-token-dto";
-import { AccountTokens } from "../typeorm/entities/account-tokens";
+import { ICreateAccountTokenDTO } from "@modules/accounts/dtos";
+import { AccountTokens } from "@modules/accounts/typeorm/entities";
 
 interface IAccountsTokensRepository {
 

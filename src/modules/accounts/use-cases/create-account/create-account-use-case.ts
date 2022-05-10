@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe";
 import { hash } from "bcrypt"
 
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-import { ICreateAccountDTO } from "../../dtos/i-create-account-dto";
+import { IAccountsRepository } from "@modules/accounts/repositories";
+import { ICreateAccountDTO } from "@modules/accounts/dtos";
 
-import { AppError } from "../../../../shared/errors/app-errors";
+import { AppError } from "@shared/errors/app-errors";
 
 
 @injectable()

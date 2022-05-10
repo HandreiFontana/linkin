@@ -1,5 +1,5 @@
-import { ICreateAccountDTO } from "../dtos/i-create-account-dto";
-import { Account } from "../typeorm/entities/account";
+import { ICreateAccountDTO } from "@modules/accounts/dtos";
+import { Account } from "@modules/accounts/typeorm/entities";
 
 
 interface IAccountsRepository {

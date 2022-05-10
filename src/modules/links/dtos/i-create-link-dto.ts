@@ -1,10 +1,13 @@
+import { Category } from "@modules/categories/typeorm/entities/category";
+
 interface ICreateLinkDTO {
     id?: string;
     title: string,
     description: string,
     url: string,
-    account_id: string,
-    category_id: string,
+    accountId: string,
+    categoryId: string,
+    category: Category,
     isPrivate?: boolean
 };
 

@@ -1,6 +1,5 @@
-import { ICreateLinkDTO } from '../dtos/i-create-link-dto';
-
-import { Link } from '../typeorm/entities/link';
+import { ICreateLinkDTO } from '@modules/links/dtos';
+import { Link } from '@modules/links/typeorm/entities';
 
 
 interface ILinksRepository {
@@ -9,11 +8,11 @@ interface ILinksRepository {
         title,
         description,
         url,
-        account_id,
-        category_id,
+        accountId,
+        categoryId,
         isPrivate
     }: ICreateLinkDTO): Promise<void>,
-    list(username: string): Promise<Link[]>,
+    list(accountId: string): Promise<Link[]>,
     findById(id: string): Promise<Link>,
     delete(link: Link): Promise<void>,
 }

@@ -1,9 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { ICreateCategoryDTO } from "../../dtos/i-create-category-dto";
-import { ICategoriesRepository } from "../../repositories/i-categories-repository";
-
-import { Category } from "../entities/category";
+import { ICreateCategoryDTO } from "@modules/categories/dtos";
+import { ICategoriesRepository } from "@modules/categories/repositories";
+import { Category } from "@modules/categories/typeorm/entities";
 
 
 class CategoriesRepository implements ICategoriesRepository {
@@ -14,16 +13,18 @@ class CategoriesRepository implements ICategoriesRepository {
         this.repository = getRepository(Category);
     }
 
-    async create({ id, name, account_id }: ICreateCategoryDTO): Promise<void> {
-        const category = this.repository.create({ id, name, account_id })
+    async create({ id, name, accountId }: ICreateCategoryDTO): Promise<void> {
+        const category = this.repository.create({ id, name, accountId })
 
         await this.repository.save(category);
     }
 
-    async list(account_id: string): Promise<Category[]> {
+    async list(accountId: string): Promise<Category[]> {
         const categories = await this.repository.find()
 
-        return categories.filter(category => category.account_id === account_id)
+        console.log(categories)
+
+        return categories.filter(category => category.accountId === accountId)
     }
 
     async findById(id: string): Promise<Category> {

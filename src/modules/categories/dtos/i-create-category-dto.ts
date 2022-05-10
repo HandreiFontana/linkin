@@ -1,7 +1,7 @@
 interface ICreateCategoryDTO {
     id?: string;
     name: string;
-    account_id: string;
+    accountId: string;
 }
 
 export { ICreateCategoryDTO }

@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { ILinksRepository } from "../../repositories/i-links-repository";
+import { ILinksRepository } from "@modules/links/repositories";
 
-import { AppError } from "../../../../shared/errors/app-errors";
+import { AppError } from "@shared/errors";
 
 
 interface IRequest {

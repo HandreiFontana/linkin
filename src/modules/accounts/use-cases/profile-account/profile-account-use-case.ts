@@ -1,9 +1,8 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAccountResponseDTO } from "../../dtos/i-account-response-dto";
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-
-import { AccountMap } from "../../mapper/user-map";
+import { IAccountResponseDTO } from "@modules/accounts/dtos";
+import { IAccountsRepository } from "@modules/accounts/repositories";
+import { AccountMap } from "@modules/accounts/mapper/user-map";
 
 
 @injectable()

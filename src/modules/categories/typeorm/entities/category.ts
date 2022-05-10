@@ -18,12 +18,10 @@ class Category {
     @Column()
     name: string;
 
-    @Column()
-    account_id: string;
-
     @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id" })
+    @JoinColumn({ name: "account_id", nullable: true })
     account: Account;
+    accountId: string;
 
     @CreateDateColumn()
     created_at: Date;

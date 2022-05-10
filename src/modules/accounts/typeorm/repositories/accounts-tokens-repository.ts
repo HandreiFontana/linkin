@@ -1,9 +1,8 @@
 import { getRepository, Repository } from "typeorm";
 
-import { ICreateAccountTokenDTO } from "../../dtos/i-create-account-token-dto";
-import { IAccountsTokensRepository } from "../../repositories/i-accounts-tokens-repository";
-
-import { AccountTokens } from "../entities/account-tokens";
+import { ICreateAccountTokenDTO } from "@modules/accounts/dtos";
+import { IAccountsTokensRepository } from "@modules/accounts/repositories";
+import { AccountTokens } from "@modules/accounts/typeorm/entities";
 
 
 class AccountsTokensRepository implements IAccountsTokensRepository {

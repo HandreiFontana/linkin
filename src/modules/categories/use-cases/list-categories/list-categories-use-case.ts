@@ -1,10 +1,9 @@
 import { inject, injectable } from "tsyringe";
 
-import { IAccountsRepository } from "../../../accounts/repositories/i-accounts-repository";
-import { ICategoriesRepository } from "../../repositories/i-categories-repository";
-
-import { AccountMap } from "../../../accounts/mapper/user-map";
-import { Category } from "../../typeorm/entities/category";
+import { IAccountsRepository } from "@modules/accounts/repositories";
+import { AccountMap } from "@modules/accounts/mapper/user-map";
+import { ICategoriesRepository } from "@modules/categories/repositories";
+import { Category } from "@modules/categories/typeorm/entities";
 
 
 @injectable()

@@ -1,11 +1,12 @@
 import { sign, verify } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
-import { IDateProvider } from "../../../../shared/container/providers/date-provider/i-date-provider";
-import { IAccountsTokensRepository } from "../../repositories/i-accounts-tokens-repository";
+import { IAccountsTokensRepository } from "@modules/accounts/repositories";
 
-import auth from "../../../../config/auth";
-import { AppError } from "../../../../shared/errors/app-errors";
+import { AppError } from "@shared/errors";
+import { IDateProvider } from "@shared/container/providers/date-provider/i-date-provider";
+
+import auth from "@config/auth";
 
 
 interface IPayload {

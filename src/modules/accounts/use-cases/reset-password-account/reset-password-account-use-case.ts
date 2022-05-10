@@ -1,11 +1,14 @@
 import { inject, injectable } from "tsyringe";
-
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-import { IAccountsTokensRepository } from "../../repositories/i-accounts-tokens-repository";
-import { IDateProvider } from "../../../../shared/container/providers/date-provider/i-date-provider";
-
-import { AppError } from "../../../../shared/errors/app-errors";
 import { hash } from "bcrypt";
+
+import {
+    IAccountsRepository,
+    IAccountsTokensRepository
+} from "@modules/accounts/repositories";
+
+import { AppError } from "@shared/errors";
+import { IDateProvider } from "@shared/container/providers/date-provider/i-date-provider";
+
 
 interface IRequest {
     token: string,

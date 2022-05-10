@@ -2,12 +2,14 @@ import { inject, injectable } from "tsyringe";
 import { resolve } from "path";
 import { v4 as uuidV4 } from "uuid"
 
-import { IAccountsRepository } from "../../repositories/i-accounts-repository";
-import { IDateProvider } from "../../../../shared/container/providers/date-provider/i-date-provider";
-import { IMailProvider } from "../../../../shared/container/providers/mail-provider/i-mail-provider";
-import { IAccountsTokensRepository } from "../../repositories/i-accounts-tokens-repository";
+import {
+    IAccountsRepository,
+    IAccountsTokensRepository
+} from "@modules/accounts/repositories";
 
-import { AppError } from "../../../../shared/errors/app-errors";
+import { AppError } from "@shared/errors";
+import { IDateProvider } from "@shared/container/providers/date-provider/i-date-provider";
+import { IMailProvider } from "@shared/container/providers/mail-provider/i-mail-provider";
 
 
 @injectable()

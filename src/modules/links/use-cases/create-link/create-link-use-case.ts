@@ -1,10 +1,10 @@
 import { inject, injectable } from "tsyringe"
-import { ICategoriesRepository } from "../../../categories/repositories/i-categories-repository"
 
-import { ICreateLinkDTO } from "../../dtos/i-create-link-dto"
-import { ILinksRepository } from "../../repositories/i-links-repository"
+import { ICategoriesRepository } from "@modules/categories/repositories"
+import { ICreateLinkDTO } from "@modules/links/dtos"
+import { ILinksRepository } from "@modules/links/repositories"
 
-import { AppError } from "../../../../shared/errors/app-errors";
+import { AppError } from "@shared/errors";
 
 
 @injectable()

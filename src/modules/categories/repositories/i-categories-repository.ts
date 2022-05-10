@@ -1,11 +1,10 @@
-import { ICreateCategoryDTO } from "../dtos/i-create-category-dto"
-
-import { Category } from "../typeorm/entities/category"
+import { ICreateCategoryDTO } from "@modules/categories/dtos";
+import { Category } from "@modules/categories/typeorm/entities";
 
 
 interface ICategoriesRepository {
-    create({ id, name, account_id }: ICreateCategoryDTO): Promise<void>,
-    list(account_id: string): Promise<Category[]>,
+    create({ id, name, accountId }: ICreateCategoryDTO): Promise<void>,
+    list(accountId: string): Promise<Category[]>,
     findById(id: string): Promise<Category>,
     delete(category: Category): Promise<void>
 }

@@ -1,6 +1,8 @@
 import { inject, injectable } from "tsyringe";
-import { ICreateCategoryDTO } from "../../dtos/i-create-category-dto";
-import { ICategoriesRepository } from "../../repositories/i-categories-repository";
+
+import { ICreateCategoryDTO } from "@modules/categories/dtos";
+import { ICategoriesRepository } from "@modules/categories/repositories";
+
 
 @injectable()
 class CreateCategoryUseCase {
@@ -10,8 +12,8 @@ class CreateCategoryUseCase {
         private categoriesRepository: ICategoriesRepository
     ) { }
 
-    async execute({ name, account_id }: ICreateCategoryDTO): Promise<void> {
-        await this.categoriesRepository.create({ name, account_id })
+    async execute({ name, accountId }: ICreateCategoryDTO): Promise<void> {
+        await this.categoriesRepository.create({ name, accountId })
     }
 }
 
