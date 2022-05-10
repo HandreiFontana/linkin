@@ -7,13 +7,13 @@ import { DeleteLinkUseCase } from "./delete-link-use-case";
 class DeleteLinkController {
 
     async handle(request: Request, response: Response): Promise<Response> {
-        const { link_id } = request.params;
+        const { linkId } = request.params;
 
-        const { id: account_id } = request.account;
+        const { id: accountId } = request.account;
 
         const deleteLinkUseCase = container.resolve(DeleteLinkUseCase);
 
-        await deleteLinkUseCase.execute({ link_id, account_id })
+        await deleteLinkUseCase.execute({ linkId, accountId })
 
         return response.status(204).send()
     }

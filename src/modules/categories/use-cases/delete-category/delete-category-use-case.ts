@@ -6,8 +6,8 @@ import { AppError } from "@shared/errors";
 
 
 interface IRequest {
-    category_id: string;
-    account_id: string
+    categoryId: string;
+    accountId: string
 }
 
 
@@ -19,10 +19,12 @@ class DeleteCategoryUseCase {
         private categoriesRepository: ICategoriesRepository
     ) { }
 
-    async execute({ category_id, account_id }: IRequest): Promise<void> {
-        const category = await this.categoriesRepository.findById(category_id);
+    async execute({ categoryId, accountId }: IRequest): Promise<void> {
+        console.log(categoryId, accountId);
+        const category = await this.categoriesRepository.findById(categoryId);
+        console.log(category); // Não traz o accountId
 
-        if (!category || (category.account_id !== account_id)) {
+        if (!category || (category.accountId !== accountId)) {
             throw new AppError("Unauthorized", 401)
         };
 

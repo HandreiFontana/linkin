@@ -16,7 +16,7 @@ interface IPayload {
 
 interface ITokenResponse {
     token: string;
-    refresh_token: string;
+    refreshToken: string;
 }
 
 @injectable()
@@ -43,38 +43,38 @@ class RefreshTokenUseCase {
             auth.secret_refresh_token,
         ) as IPayload;
 
-        const account_id = sub;
+        const accountId = sub;
 
         const accountToken = await this.accountsTokensRepository
             .findByAccountIdAndRefreshToken(
-                account_id,
+                accountId,
                 token,
             );
 
         await this.accountsTokensRepository.deleteById(accountToken.id);
 
-        const refresh_token = sign({ email }, auth.secret_refresh_token, {
+        const refreshToken = sign({ email }, auth.secret_refresh_token, {
             subject: sub,
             expiresIn: auth.expires_in_refresh_token,
         });
 
-        const expires_date = this.dateProvider.addDays(
+        const expiresDate = this.dateProvider.addDays(
             auth.expires_refresh_token_days
         )
 
         await this.accountsTokensRepository.create({
-            expires_date,
-            refresh_token,
-            account_id
+            expiresDate,
+            refreshToken,
+            accountId
         })
 
         const newToken = sign({}, auth.secret_token, {
-            subject: account_id,
+            subject: accountId,
             expiresIn: auth.expires_in_token,
         });
 
         return {
-            refresh_token,
+            refreshToken,
             token: newToken
         }
     }

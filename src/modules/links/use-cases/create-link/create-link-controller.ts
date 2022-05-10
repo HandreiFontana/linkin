@@ -8,9 +8,9 @@ class CreateLinkController {
 
     async handle(request: Request, response: Response): Promise<Response> {
 
-        const { id: account_id } = request.account;
+        const { id: accountId } = request.account;
 
-        const { category_id } = request.params;
+        const { categoryId } = request.params;
 
         const { title, description, url, isPrivate } = request.body;
 
@@ -20,8 +20,8 @@ class CreateLinkController {
             title,
             description,
             url,
-            category_id,
-            account_id,
+            categoryId,
+            accountId,
             isPrivate
         });
 

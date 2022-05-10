@@ -7,7 +7,7 @@ interface ICreateLinkDTO {
     url: string,
     accountId: string,
     categoryId: string,
-    category: Category,
+    category?: Category,
     isPrivate?: boolean
 };
 

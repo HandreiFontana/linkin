@@ -40,7 +40,7 @@ class ResetPasswordAccountUseCase {
         }
 
         if (this.dateProvider.compareIfBefore(
-            accountToken.expires_date,
+            accountToken.expiresDate,
             this.dateProvider.dateNow(),
         )) {
             throw new AppError("Token expired!");
@@ -49,7 +49,7 @@ class ResetPasswordAccountUseCase {
         const account = await this
             .accountsRepository
             .findById(
-                accountToken.account_id
+                accountToken.accountId
             )
 
         account.password = await hash(password, 8);

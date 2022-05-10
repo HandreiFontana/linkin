@@ -7,13 +7,13 @@ import { DeleteCategoryUseCase } from "./delete-category-use-case";
 class DeleteCategoryController {
     async handle(request: Request, response: Response): Promise<Response> {
 
-        const { id: account_id } = request.account;
+        const { id: accountId } = request.account;
 
-        const { category_id } = request.params;
+        const { categoryId } = request.params;
 
         const deleteCategoryUseCase = container.resolve(DeleteCategoryUseCase);
 
-        await deleteCategoryUseCase.execute({ account_id, category_id });
+        await deleteCategoryUseCase.execute({ accountId, categoryId });
 
         return response.status(204).send()
     }

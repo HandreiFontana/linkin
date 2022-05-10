@@ -17,6 +17,6 @@ categoriesRoutes.post("/", ensureAuthenticated, createCategoryController.handle)
 
 categoriesRoutes.get("/:username", listCategoriesController.handle)
 
-categoriesRoutes.delete("/:category_id", ensureAuthenticated, deleteCategoryController.handle)
+categoriesRoutes.delete("/:categoryId", ensureAuthenticated, deleteCategoryController.handle)
 
 export { categoriesRoutes }

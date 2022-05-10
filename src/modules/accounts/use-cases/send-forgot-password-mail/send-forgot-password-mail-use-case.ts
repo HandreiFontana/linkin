@@ -45,12 +45,12 @@ class SendForgotPasswordMailUseCase {
 
         const token = uuidV4();
 
-        const expires_date = this.dateProvider.addHours(3);
+        const expiresDate = this.dateProvider.addHours(3);
 
         await this.accountsTokensRepository.create({
-            refresh_token: token,
-            account_id: account.id,
-            expires_date,
+            refreshToken: token,
+            accountId: account.id,
+            expiresDate,
         });
 
         const variables = {

@@ -13,14 +13,14 @@ class AccountsTokensRepository implements IAccountsTokensRepository {
     }
 
     async create({
-        expires_date,
-        refresh_token,
-        account_id
+        expiresDate,
+        refreshToken,
+        accountId
     }: ICreateAccountTokenDTO): Promise<AccountTokens> {
         const accountToken = this.repository.create({
-            expires_date,
-            refresh_token,
-            account_id
+            expiresDate,
+            refreshToken,
+            accountId
         })
 
         await this.repository.save(accountToken);
@@ -29,12 +29,12 @@ class AccountsTokensRepository implements IAccountsTokensRepository {
     }
 
     async findByAccountIdAndRefreshToken(
-        account_id: string,
-        refresh_token: string
+        accountId: string,
+        refreshToken: string
     ): Promise<AccountTokens> {
         const accountsTokens = await this.repository.findOne({
-            account_id,
-            refresh_token,
+            accountId,
+            refreshToken,
         })
 
         return accountsTokens;
@@ -44,14 +44,14 @@ class AccountsTokensRepository implements IAccountsTokensRepository {
         await this.repository.delete(id)
     }
 
-    async findByRefreshToken(refresh_token: string): Promise<AccountTokens> {
-        const accountToken = await this.repository.findOne({ refresh_token })
+    async findByRefreshToken(refreshToken: string): Promise<AccountTokens> {
+        const accountToken = await this.repository.findOne({ refreshToken })
 
         return accountToken;
     }
 
-    async findByAccountId(account_id: string): Promise<AccountTokens> {
-        const accountToken = await this.repository.findOne({ account_id })
+    async findByAccountId(accountId: string): Promise<AccountTokens> {
+        const accountToken = await this.repository.findOne({ accountId })
 
         return accountToken
     }

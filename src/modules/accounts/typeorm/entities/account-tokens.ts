@@ -16,21 +16,19 @@ class AccountTokens {
     @PrimaryColumn()
     id: string;
 
-    @Column()
-    refresh_token: string;
-
-    @Column()
-    account_id: string;
+    @Column({ name: "refresh_token", nullable: true })
+    refreshToken: string;
 
     @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id" })
+    @JoinColumn({ name: "account_id", nullable: true })
+    accountId: string;
     account: Account;
 
-    @Column()
-    expires_date: Date;
+    @Column({ name: "expires_date", nullable: true })
+    expiresDate: Date;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @CreateDateColumn({ name: "created_at", nullable: true })
+    createdAt: Date;
 
     constructor() {
         if (!this.id) {

@@ -8,23 +8,23 @@ import {
 } from "typeorm";
 import { v4 as uuidV4 } from "uuid";
 
-import { Account } from "../../../accounts/typeorm/entities/account";
+import { Account } from "@modules/accounts/typeorm/entities";
 
 @Entity("categories")
 class Category {
     @PrimaryColumn()
     id?: string;
 
-    @Column()
+    @Column({ name: "name", nullable: true })
     name: string;
 
     @ManyToOne(() => Account)
     @JoinColumn({ name: "account_id", nullable: true })
-    account: Account;
     accountId: string;
+    account: Account;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @CreateDateColumn({ name: 'created_at', nullable: true })
+    createdAt: Date;
 
     constructor() {
         if (!this.id) {

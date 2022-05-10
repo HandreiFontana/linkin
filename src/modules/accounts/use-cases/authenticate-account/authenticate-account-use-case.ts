@@ -24,7 +24,7 @@ interface IResponse {
         email: string,
     },
     token: string,
-    refresh_token: string,
+    refreshToken: string,
 }
 
 
@@ -67,7 +67,7 @@ class AuthenticateAccountUseCase {
             expiresIn: expires_in_token,
         });
 
-        const refresh_token = sign({ email }, secret_refresh_token, {
+        const refreshToken = sign({ email }, secret_refresh_token, {
             subject: account.id,
             expiresIn: expires_in_refresh_token,
         });
@@ -85,9 +85,9 @@ class AuthenticateAccountUseCase {
         );
 
         await this.accountsTokensRepository.create({
-            account_id: account.id,
-            refresh_token,
-            expires_date: refresh_token_expires_date
+            accountId: account.id,
+            refreshToken,
+            expiresDate: refresh_token_expires_date
         });
 
         const tokenReturn: IResponse = {
@@ -96,7 +96,7 @@ class AuthenticateAccountUseCase {
                 username: account.username,
                 email: account.email
             },
-            refresh_token,
+            refreshToken,
         };
 
         return tokenReturn;

@@ -27,19 +27,19 @@ class Link {
 
     @ManyToOne(() => Category)
     @JoinColumn({ name: "category_id", nullable: true })
-    category: Category;
     categoryId: string;
+    category: Category;
 
     @ManyToOne(() => Account)
     @JoinColumn({ name: "account_id", nullable: true })
-    account: Account;
     accountId: string;
+    account: Account;
 
     @Column({ name: "isPrivate", nullable: true })
     isPrivate: boolean;
 
     @CreateDateColumn({ name: "created_at", nullable: true })
-    created_at: Date;
+    createdAt: Date;
 
     constructor() {
         if (!this.id) {

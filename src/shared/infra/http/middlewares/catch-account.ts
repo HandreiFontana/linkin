@@ -20,13 +20,13 @@ export async function catchAccount(
         const [, token] = authHeader.split(' ');
 
 
-        const { sub: account_id } = verify(
+        const { sub: accountId } = verify(
             token,
             auth.secret_token,
         ) as IPayload;
 
         request.account = {
-            id: account_id
+            id: accountId
         }
 
         next();

@@ -4,17 +4,17 @@ import { AccountTokens } from "@modules/accounts/typeorm/entities";
 interface IAccountsTokensRepository {
 
     create({
-        expires_date,
-        refresh_token,
-        account_id
+        expiresDate,
+        refreshToken,
+        accountId
     }: ICreateAccountTokenDTO): Promise<AccountTokens>;
     findByAccountIdAndRefreshToken(
-        account_id: string,
-        refresh_token: string
+        accountId: string,
+        refreshToken: string
     ): Promise<AccountTokens>;
     deleteById(id: string): Promise<void>;
-    findByRefreshToken(refresh_token: string): Promise<AccountTokens>;
-    findByAccountId(account_id: string): Promise<AccountTokens>;
+    findByRefreshToken(refreshToken: string): Promise<AccountTokens>;
+    findByAccountId(accountId: string): Promise<AccountTokens>;
 }
 
 export { IAccountsTokensRepository }

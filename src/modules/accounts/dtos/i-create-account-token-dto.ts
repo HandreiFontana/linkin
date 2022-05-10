@@ -1,7 +1,7 @@
 interface ICreateAccountTokenDTO {
-    account_id: string;
-    expires_date: Date;
-    refresh_token: string;
+    accountId: string;
+    expiresDate: Date;
+    refreshToken: string;
 }
 
 export { ICreateAccountTokenDTO }

@@ -7,17 +7,17 @@ class Account {
     @PrimaryColumn()
     id: string;
 
-    @Column()
+    @Column({ name: 'username', nullable: true })
     username: string;
 
-    @Column()
+    @Column({ name: 'password', nullable: true })
     password: string;
 
-    @Column()
+    @Column({ name: 'email', nullable: true })
     email: string;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @CreateDateColumn({ name: 'created_at', nullable: true })
+    createdAt: Date;
 
     constructor() {
         if (!this.id) {

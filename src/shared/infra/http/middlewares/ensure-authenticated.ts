@@ -24,13 +24,13 @@ export async function ensureAuthenticated(
     const [, token] = authHeader.split(" ");
 
     try {
-        const { sub: account_id } = verify(
+        const { sub: accountId } = verify(
             token,
             auth.secret_token,
         ) as IPayload;
 
         request.account = {
-            id: account_id
+            id: accountId
         }
 
         next();

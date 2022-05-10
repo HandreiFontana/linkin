@@ -222,7 +222,7 @@
                 }
             }     
         },
-        "/links/{category_id}": {
+        "/links/{categoryId}": {
             "post": {
                 "tags": ["Links"],
                 "summary": "Create a link",
@@ -232,7 +232,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "category_id",
+                        "name": "categoryId",
                         "in": "path",
                         "description": "Category id",
                         "required": true
@@ -278,7 +278,7 @@
                 }
             }            
         },
-        "/links/{username}/{category_id}": {
+        "/links/{username}/{categoryId}": {
             "get": {
                 "tags": ["Links"],
                 "summary": "List all links",
@@ -294,7 +294,7 @@
                         "required": true
                     },
                     {
-                        "name": "category_id",
+                        "name": "categoryId",
                         "in": "path",
                         "description": "Category id",
                         "required": true
@@ -319,10 +319,10 @@
                                             "url": {
                                                 "type": "string"
                                             },
-                                            "category_id": {
+                                            "categoryId": {
                                                 "type": "string"
                                             },
-                                            "account_id": {
+                                            "accountId": {
                                                 "type": "string"
                                             },
                                             "isPrivate": {
@@ -337,7 +337,7 @@
                 }
             }
         },
-        "/links/{link_id}": {
+        "/links/{linkId}": {
             "delete": {
                 "tags": ["Links"],
                 "summary": "Delete a link",
@@ -347,7 +347,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "link_id",
+                        "name": "linkId",
                         "in": "path",
                         "description": "Link id",
                         "required": true
@@ -424,7 +424,7 @@
                                             "name": {
                                                 "type": "string"
                                             },
-                                            "account_id": {
+                                            "accountId": {
                                                 "type": "string"
                                             }
                                         }
@@ -436,7 +436,7 @@
                 }
             }
         },
-        "/categories/{category_id}": {
+        "/categories/{categoryId}": {
             "delete": {
                 "tags": ["Categories"],
                 "summary": "Delete a categorie",
@@ -446,7 +446,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "category_id",
+                        "name": "categoryId",
                         "in": "path",
                         "description": "Category id",
                         "required": true

@@ -21,13 +21,13 @@ class CreateLinkUseCase {
         title,
         description,
         url,
-        account_id,
-        category_id,
+        accountId,
+        categoryId,
         isPrivate
     }: ICreateLinkDTO): Promise<void> {
-        const category = await this.categoriesRepository.findById(category_id);
+        const category = await this.categoriesRepository.findById(categoryId);
 
-        if (!category || !(category.account_id === account_id)) {
+        if (!category || !(category.accountId === accountId)) {
             throw new AppError("Unauthorized", 401)
         }
 
@@ -35,8 +35,8 @@ class CreateLinkUseCase {
             title,
             description,
             url,
-            account_id,
-            category_id,
+            accountId,
+            categoryId,
             isPrivate
         })
     }
