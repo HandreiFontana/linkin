@@ -16,33 +16,29 @@ class Link {
     @PrimaryColumn()
     id?: string;
 
-    @Column()
+    @Column({ name: 'title', nullable: true })
     title: string;
 
-    @Column()
+    @Column({ name: 'description', nullable: true })
     description: string;
 
-    @Column()
+    @Column({ name: 'url', nullable: true })
     url: string;
 
-    @Column()
+    @ManyToOne(() => Category)
+    @JoinColumn({ name: "category_id", nullable: true })
+    category: Category;
     category_id: string;
 
-    @ManyToOne(() => Category)
-    @JoinColumn({ name: "category_id" })
-    category: Category;
-
-    @Column()
+    @ManyToOne(() => Account)
+    @JoinColumn({ name: "account_id", nullable: true })
+    account: Account;
     account_id: string;
 
-    @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id" })
-    account: Account;
-
-    @Column()
+    @Column({ name: "isPrivate", nullable: true })
     isPrivate: boolean;
 
-    @CreateDateColumn()
+    @CreateDateColumn({ name: "created_at", nullable: true })
     created_at: Date;
 
     constructor() {
