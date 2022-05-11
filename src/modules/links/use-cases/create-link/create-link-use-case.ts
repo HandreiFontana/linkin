@@ -27,7 +27,7 @@ class CreateLinkUseCase {
     }: ICreateLinkDTO): Promise<void> {
         const category = await this.categoriesRepository.findById(categoryId);
 
-        if (!category || !(category.accountId === accountId)) {
+        if (!category || !(category.accountId.id === accountId)) {
             throw new AppError("Unauthorized", 401)
         }
 

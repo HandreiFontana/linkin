@@ -21,7 +21,7 @@ class DeleteLinkUseCase {
     async execute({ linkId, accountId }: IRequest): Promise<void> {
         const link = await this.linksRepository.findById(linkId);
 
-        if (!link || (link.accountId !== accountId)) {
+        if (!link || (link.accountId.id !== accountId)) {
             throw new AppError("Unauthorized", 401)
         }
 

@@ -25,13 +25,13 @@ class Link {
     @Column({ name: 'url', nullable: true })
     url: string;
 
-    @ManyToOne(() => Category)
-    @JoinColumn({ name: "category_id", nullable: true })
+    @ManyToOne(() => Category, { nullable: true, eager: true })
+    @JoinColumn({ name: "category_id", referencedColumnName: 'id' })
     categoryId: string;
     category: Category;
 
-    @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id", nullable: true })
+    @ManyToOne(() => Account, { nullable: true, eager: true })
+    @JoinColumn({ name: "account_id", referencedColumnName: 'id' })
     accountId: string;
     account: Account;
 

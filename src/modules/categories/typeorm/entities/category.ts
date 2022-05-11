@@ -18,8 +18,8 @@ class Category {
     @Column({ name: "name", nullable: true })
     name: string;
 
-    @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id", nullable: true })
+    @ManyToOne(() => Account, { nullable: true, eager: true })
+    @JoinColumn({ name: "account_id", referencedColumnName: 'id' })
     accountId: string;
     account: Account;
 

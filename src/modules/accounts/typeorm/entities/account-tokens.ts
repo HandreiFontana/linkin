@@ -19,8 +19,8 @@ class AccountTokens {
     @Column({ name: "refresh_token", nullable: true })
     refreshToken: string;
 
-    @ManyToOne(() => Account)
-    @JoinColumn({ name: "account_id", nullable: true })
+    @ManyToOne(() => Account, { nullable: true, eager: true })
+    @JoinColumn({ name: "account_id", referencedColumnName: 'id' })
     accountId: string;
     account: Account;
 

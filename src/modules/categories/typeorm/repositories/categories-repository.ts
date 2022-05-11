@@ -22,9 +22,7 @@ class CategoriesRepository implements ICategoriesRepository {
     async list(accountId: string): Promise<Category[]> {
         const categories = await this.repository.find()
 
-        console.log(categories)
-
-        return categories.filter(category => category.accountId === accountId)
+        return categories.filter(category => category.accountId.id === accountId)
     }
 
     async findById(id: string): Promise<Category> {

@@ -20,11 +20,9 @@ class DeleteCategoryUseCase {
     ) { }
 
     async execute({ categoryId, accountId }: IRequest): Promise<void> {
-        console.log(categoryId, accountId);
         const category = await this.categoriesRepository.findById(categoryId);
-        console.log(category); // Não traz o accountId
 
-        if (!category || (category.accountId !== accountId)) {
+        if (!category || (category.accountId.id !== accountId)) {
             throw new AppError("Unauthorized", 401)
         };
 
